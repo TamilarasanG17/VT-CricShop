@@ -28,7 +28,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/reset-password', { email: state.email, newPassword });
+      const response = await axios.post('https://vt-cricshop-e657.onrender.com/api/auth/reset-password', { email: state.email, newPassword });
       Swal.fire({
         icon: 'success',
         title: 'Success!',
