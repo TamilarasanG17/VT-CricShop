@@ -14,7 +14,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true); 
     try {
-      await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      await axios.post('https://vt-cricshop-e657.onrender.com/api/auth/forgot-password', { email });
 
       Swal.fire({
         icon: 'success',
