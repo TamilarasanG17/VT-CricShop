@@ -33,7 +33,7 @@ const BuyPage = () => {
     if (!product) {
       const fetchProduct = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/products/${productId}`);
+          const response = await axios.get(`https://vt-cricshop-e657.onrender.com/api/products/${productId}`);
           setProduct(response.data.data);
         } catch (error) {
           console.error('Error fetching product:', error);
@@ -74,7 +74,7 @@ const BuyPage = () => {
     doc.line(margin, 35, doc.internal.pageSize.width - margin, 35);
 
     if (product?.imageUrl) {
-      doc.addImage(`http://localhost:5000${product.imageUrl}`, 'JPEG', margin, 50, 50, 50);
+      doc.addImage(`https://vt-cricshop-e657.onrender.com${product.imageUrl}`, 'JPEG', margin, 50, 50, 50);
     } else {
       doc.setFont('helvetica', 'italic');
       doc.text('Product image not available', margin, 60);
@@ -123,7 +123,7 @@ const BuyPage = () => {
 
   const createOrder = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/products/orders', {
+      const response = await axios.post('https://vt-cricshop-e657.onrender.com/api/products/orders', {
         userName: userDetails.name,
         address: `${userDetails.doorNo}, ${userDetails.street}, ${userDetails.city}, ${userDetails.district}, ${userDetails.state}, ${userDetails.country}, ${userDetails.pincode}`,
         phone: userDetails.phone,
