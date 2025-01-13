@@ -16,7 +16,7 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/products/${productId}`);
+        const response = await axios.get(`https://vt-cricshop-e657.onrender.com/api/products/${productId}`);
         setProduct({
           ...response.data,
           rating: response.data.rating || 0,
@@ -53,7 +53,7 @@ const ProductsPage = () => {
     };
 
     try {
-      await axios.post(`http://localhost:5000/api/products/${productId}/reviews`, newReviewData);
+      await axios.post(`https://vt-cricshop-e657.onrender.com/api/products/${productId}/reviews`, newReviewData);
       setProduct((prevState) => ({
         ...prevState,
         reviews: [...prevState.reviews, newReviewData],
@@ -93,7 +93,7 @@ const ProductsPage = () => {
 
         <div className="md:w-1/2 w-full mb-4 md:mb-0 transform transition-all duration-500 hover:scale-105">
           <img
-            src={`http://localhost:5000${product.imageUrl}`}
+            src={`https://vt-cricshop-e657.onrender.com${product.imageUrl}`}
             alt={product.name}
             className="w-full h-auto rounded-lg shadow-lg animate__animated animate__fadeIn"
           />
