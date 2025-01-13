@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Header from './components/Header';
-import './app.css'
 import Cart from './pages/Cart';
 import ProductPage from './pages/ProductsPage';
 import BuyPage from './pages/Buy';
