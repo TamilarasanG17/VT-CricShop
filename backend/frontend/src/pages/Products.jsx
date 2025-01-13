@@ -15,10 +15,10 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products');
-        console.log(response.data); // Check the structure of the response
-        setProducts(response.data.data || []); // Ensure it defaults to an empty array if data is undefined
-        setFilteredProducts(response.data.data || []); // Ensure it defaults to an empty array if data is undefined
+        const response = await axios.get('https://vt-cricshop-e657.onrender.com/api/products');
+        console.log(response.data); 
+        setProducts(response.data.data || []);
+        setFilteredProducts(response.data.data || []);
       } catch (err) {
         console.error('Error fetching products:', err);
       }
@@ -37,7 +37,7 @@ const Products = () => {
 
   const addToCart = async (productId) => {
     try {
-      await axios.post('http://localhost:5000/api/cart', { productId });
+      await axios.post('https://vt-cricshop-e657.onrender.com/api/cart', { productId });
       // Use SweetAlert to show success message
       Swal.fire({
         icon: 'success',
@@ -83,7 +83,7 @@ const Products = () => {
                 onClick={() => navigate(`/products/${product._id}`)}
               >
                 <img
-                  src={`http://localhost:5000${product.imageUrl}`}
+                  src={`https://vt-cricshop-e657.onrender.com${product.imageUrl}`}
                   alt={product.name}
                   className="w-full h-40 sm:h-56 lg:h-64 object-cover" // Reduced image size
                 />
@@ -92,7 +92,7 @@ const Products = () => {
                 </div>
               </div>
 
-              <div className="p-4 sm:p-6"> {/* Reduced padding */}
+              <div className="p-4 sm:p-6">
                 <p className="text-gray-500 text-xs sm:text-sm mb-3">{product.description}</p>
                 <div className="flex items-center mb-3">
                   <span className="text-yellow-400 flex items-center">
