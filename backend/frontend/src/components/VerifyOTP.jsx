@@ -13,7 +13,7 @@ const VerifyOTP = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/verify-otp', { email, otp });
+      const res = await axios.post('https://vt-cricshop-e657.onrender.com/api/auth/verify-otp', { email, otp });
       Swal.fire({
         icon: 'success',
         title: 'OTP Verified!',
