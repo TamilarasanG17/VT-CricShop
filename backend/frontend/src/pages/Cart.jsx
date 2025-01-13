@@ -12,7 +12,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/cart');
+        const response = await axios.get('https://vt-cricshop-e657.onrender.com/api/cart');
 
         if (Array.isArray(response.data.data)) {
           setCartItems(response.data.data);
@@ -100,7 +100,7 @@ const Cart = () => {
                   <Link to={`/products/${item.productId._id}`} className="flex-shrink-0">
                     {`http://localhost:5000${item.productId.imageUrl}` ? (
                       <img
-                        src={`http://localhost:5000${item.productId.imageUrl}`}
+                        src={`https://vt-cricshop-e657.onrender.com${item.productId.imageUrl}`}
                         alt={item.name}
                         className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg cursor-pointer"
                       />
