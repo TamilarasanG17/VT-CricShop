@@ -26,7 +26,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/auth/login',
+        'https://vt-cricshop-e657.onrender.com/api/auth/login',
         formData
       );
       Swal.fire({
