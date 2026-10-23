@@ -2,27 +2,24 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/auth');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 require('dotenv').config();
 
 const router = express.Router();
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const sendOTPEmail = async (email, otp) => {
   try {
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+    const { error } = await resend.emails.send({
+      from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
       to: email,
       subject: 'Your OTP Code',
       text: `Your OTP is: ${otp}`,
     });
+
+    // Resend returns an error object instead of throwing
+    if (error) throw new Error(error.message);
   } catch (err) {
     console.error('Error sending OTP email:', err);
     throw new Error('Error sending OTP email');
